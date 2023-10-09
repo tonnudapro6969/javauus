@@ -1,21 +1,26 @@
 import java.util.Scanner;
 
 public class iseseisev20 {
-    public static int arvutused() {
+    public static int arvutus() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Sisesta binaararv: ");
+        System.out.print("sisesta bin arv: ");
         String binarv = scanner.nextLine();
-
-        int decarv = Integer.parseInt(binarv, 2); //teisendab binaararvu deciaml arvuks ja salvestab muutujasse decarv
+        int decarv = 0; // decarv muutuja on 0
         scanner.close();
-
-        return decarv; //tagastab
-    }
+        try {
+            decarv = Integer.parseInt(binarv, 2); // proovib teisendada antud arvu bin dec arvuks.
+        } catch (NumberFormatException e) { //catch kask kaivitub kui ei ole korrektne
+            System.out.println("Sisestage oige bin arv."); 
+        }
+            return 0; //tagastab 0 kui ei ole oige arv
+        }
+    
 
     public static void main(String[] args) {
-        int decarv = arvutused(); //kutsub arvutused meetodi valja ja prindib
+        int decarv = arvutus(); // Kutsub arvutused meetodi välja ja saab tagastatud väärtuse.
 
-        System.out.println("Decimal süsteemi arv on: " + decarv);
+        System.out.println("dec arv on: " + decarv);
     }
 }
+
